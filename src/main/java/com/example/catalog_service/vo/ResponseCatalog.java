@@ -1,11 +1,13 @@
 package com.example.catalog_service.vo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
-@Data
+@Setter
+@Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResponseCatalog {
 
@@ -13,5 +15,5 @@ public class ResponseCatalog {
     private String productName;
     private Integer unitPrice;
     private Integer stock;
-    private Date createdAt;
+    private LocalDateTime createdAt;
 }

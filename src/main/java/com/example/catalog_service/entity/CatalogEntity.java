@@ -1,12 +1,15 @@
 package com.example.catalog_service.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "catalog")
 public class CatalogEntity implements Serializable {
@@ -26,5 +29,5 @@ public class CatalogEntity implements Serializable {
 
     @Column(nullable = false, updatable = false, insertable = false)
     @ColumnDefault(value = "CURRENT_TIMESTAMP")
-    private Data cratedAt;
+    private LocalDateTime createdAt;
 }
