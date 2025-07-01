@@ -1,5 +1,6 @@
 package com.example.catalog_service.controller;
 
+import com.example.catalog_service.dto.CatalogDto;
 import com.example.catalog_service.entity.CatalogEntity;
 import com.example.catalog_service.service.CatalogService;
 import com.example.catalog_service.vo.ResponseCatalog;
@@ -8,9 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,5 +35,12 @@ public class CatalogController {
             result.add(new ModelMapper().map(v, ResponseCatalog.class));
         });
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<?> saveItem(@RequestBody CatalogEntity item) {
+
+        catalogService.saveItem(item);
+        return new ResponseEntity<>("상품이 등록 되었습니다.", HttpStatus.CREATED);
     }
 }

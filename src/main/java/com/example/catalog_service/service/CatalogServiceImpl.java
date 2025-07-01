@@ -1,11 +1,13 @@
 package com.example.catalog_service.service;
 
+import com.example.catalog_service.dto.CatalogDto;
 import com.example.catalog_service.entity.CatalogEntity;
 import com.example.catalog_service.entity.CatalogRepository;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 @Getter
@@ -20,5 +22,10 @@ public class CatalogServiceImpl implements CatalogService{
     @Override
     public Iterable<CatalogEntity> getAllCatalogs() {
         return catalogRepository.findAll();
+    }
+
+    @Override
+    public void saveItem(CatalogEntity item) {
+        catalogRepository.save(item);
     }
 }
